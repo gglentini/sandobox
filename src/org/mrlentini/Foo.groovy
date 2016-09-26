@@ -1,5 +1,7 @@
 package org.mrlentini;
 
-def checkOutFrom(repo) {
-    sh 'Hey!'
+class Foo {
+    def checkOutFrom(repo) {
+        sh 'Hey!'
+    }
 }

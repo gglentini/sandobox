@@ -1,7 +1,7 @@
 package org.mrlentini;
 
 class Foo {
-    def print(aString) {
+    def printSomething(aString) {
         sh 'echo ${aString}'
     }
 }

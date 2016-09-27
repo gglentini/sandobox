@@ -1,7 +1,7 @@
 package org.mrlentini;
 
 class Foo {
-    def checkOutFrom(repo) {
-        sh 'Hey!'
+    def print(aString) {
+        sh 'echo ${aString}'
     }
 }

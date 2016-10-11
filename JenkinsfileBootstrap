@@ -2,18 +2,18 @@
 
 def refspec = GERRIT_REFSPEC
 
-node('label') {
+node('scm') {
     stage('Delete the workspace before the run')
         sh 'rm -rf ./*'
 
-    stage 'Checkout' {
+    stage('Checkout') {
         // Checkout the patch set we're testing.
         // See https://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Trigger#GerritTrigger-PipelineJobs
         // Using Gerrit Trigger with Pipeline jobs.
 
-        git url: 'https://github.com/gglentini/sandobox.git'
-            //def changeBranch = "change-${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}"
-            if (refspec) {
+        if (refspec) {
+            git url: 'https://github.com/gglentini/sandobox.git'
+                //def changeBranch = "change-${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}"
                 sh "git fetch origin ${refspec}"
                 sh "git checkout FETCH_HEAD"
                 sh "git clean -d -f -q -x"

@@ -11,9 +11,9 @@ node('scm') {
         // See https://wiki.jenkins-ci.org/display/JENKINS/Gerrit+Trigger#GerritTrigger-PipelineJobs
         // Using Gerrit Trigger with Pipeline jobs.
 
-        if (refspec) {
-            git url: 'https://github.com/gglentini/sandobox.git'
+        git url: 'https://github.com/gglentini/sandobox.git'
                 //def changeBranch = "change-${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}"
+        if (refspec) {
                 sh "git fetch origin ${refspec}"
                 sh "git checkout FETCH_HEAD"
                 sh "git clean -d -f -q -x"

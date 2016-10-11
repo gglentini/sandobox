@@ -25,5 +25,8 @@ node('scm') {
                 sh "git fetch ${helpersRepoUrl} ${refspec}"
                 sh 'git checkout FETCH_HEAD'
             }
+
+        stage('Do something')
+            echo 'hey hey'
     }
 }

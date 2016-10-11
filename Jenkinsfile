@@ -1,4 +1,14 @@
-node(labels['scm']) {
+// Repository and branch where the code is saved
+def helpersRepoUrl = 'https://github.com/gglentini/sandobox.git'
+// if the job is triggered by Gerrit, get the branch received as parameter,
+// otherwise fallback to the current development branch 'master'
+def helpersBranchName = GERRIT_BRANCH ? GERRIT_BRANCH : 'master'
+
+// the Gerrit refspec where the code we want to test is saved,
+// received as a build parameter
+def refspec = GERRIT_REFSPEC
+
+node('scm') {
     def clazz
 
     timestamps() {
